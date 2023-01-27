@@ -7,8 +7,9 @@ const ctx = canvas.getContext('2d');
 // Grab the button
 const startButton = document.getElementById('start');
 
+
 // Creating the player
-const player = new Component(0, 200, 75, 75, "blue", ctx);
+const player = new Component(10, canvas.height - 256, 256, 256, "Image", ctx);
 
 startButton.onclick = () => {
     const game = new Game(ctx, canvas.width, canvas.height, player);
@@ -18,24 +19,24 @@ startButton.onclick = () => {
 document.addEventListener('keydown', (e) => {
     switch(e.code) {
         case "ArrowUp":
-            player.speedY -= 1;
+            player.y -= 50;
             break;
         case "ArrowDown":
-            player.speedY += 1;
+            player.y += 50;
             break;
         case "ArrowLeft":
-            player.speedX -= 1;
+            player.x -= 50;
             break;
         case "ArrowRight":
-            player.speedX += 1;
+            player.x += 50;
             break;
     }
 });
 
-document.addEventListener('keyup', (e) => {
+/* document.addEventListener('keyup', (e) => {
     player.speedX = 0;
     player.speedY = 0;
-});
+}); */
   // What is your game idea ?
 /* 
 - Medieval theme based on the classic game R-Type (Arcade 1987). 

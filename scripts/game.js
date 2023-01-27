@@ -9,6 +9,8 @@ class Game {
         this.interval = null;
         this.frames = 0;
         this.enemies = [];
+        this.projectiles = [];
+       /*  this.background = new Image(); */
 
     }
     start() {
@@ -45,10 +47,41 @@ class Game {
         let randomSize = Math.floor(Math.random() * 150 - 20) + 20;
         let randomY = Math.floor(Math.random() * this.height - randomSize) + randomSize;
 
-        this.enemies.push(new Component(this.width, randomY, randomSize, randomSize, "green", this.ctx)
+        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, "green", this.ctx)
             );
         }
     }
+   /*  updateProjectiles() {
+        for (let i = 0; i < this.projectiles.length; i++) {
+            if(this.projectiles[i].direction === "up") {
+                this.projectiles[i].y -= 1;
+                this.projectiles[i].draw();
+              }
+            else if (this.projectiles[i].direction === "down") {
+                this.projectiles[i].y += 1;
+                this.projectiles[i].draw();
+        }
+            else if (this.projectiles[i].direction === "left") {
+                this.projectiles[i].x -= 1;
+                this.projectiles[i].draw();
+        }
+            else if (this.projectiles[i].direction === "right") {
+                this.projectiles[i].x += 1;
+                this.projectiles[i].draw();
+    }
+    }
+        //the if statement is to create the enemies
+        // which we only want to do every 120 frames (2 seconds)
+        if (this.frames % 60 === 0) {
+            // 150 is the maximum square size
+            // 10 is the minimum size
+        let randomSize = Math.floor(Math.random() * 150 - 20) + 20;
+        let randomY = Math.floor(Math.random() * this.height - randomSize) + randomSize;
+
+        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, "green", this.ctx)
+            );
+        }
+    } */
 
     checkGameOver() {
         const crashed = this.enemies.some((enemy) => {
