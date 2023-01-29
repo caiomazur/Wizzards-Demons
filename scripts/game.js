@@ -26,6 +26,7 @@ class Game {
         this.player.draw();
         this.updateEnemies();
         this.checkGameOver();
+        this.score();
     }
     stop() {
         clearInterval(this.intervalId);
@@ -43,7 +44,7 @@ class Game {
         // which we only want to do every 120 frames (2 seconds)
         if (this.frames % 60 === 0) {
             // 150 is the maximum square size
-            // 10 is the minimum size
+            // 20 is the minimum size
         let randomSize = Math.floor(Math.random() * 150 - 20) + 20;
         let randomY = Math.floor(Math.random() * this.height - randomSize) + randomSize;
 
@@ -82,6 +83,12 @@ class Game {
             );
         }
     } */
+    score() {
+        const points = Math.floor(this.frames / 30);
+        this.ctx.font = '18px serif';
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillText(`Score: ${points}`, 1000, 50);
+      }
 
     checkGameOver() {
         const crashed = this.enemies.some((enemy) => {
