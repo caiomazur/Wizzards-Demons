@@ -4,39 +4,52 @@ const canvas = document.getElementById('canvas');
 
 const ctx = canvas.getContext('2d');
 
-// Grab the button
+// Get the start button:
 const startButton = document.getElementById('start');
+// Get the fire button:
 
 
 // Creating the player
-const player = new Component(10, canvas.height - 256, 256, 256, "Image", ctx);
+const player = new Player(10, 300, 64, 84, 'right', ctx);
+// Creating the background:
+const background = new Background(ctx);
 
 startButton.onclick = () => {
-    const game = new Game(ctx, canvas.width, canvas.height, player);
+    const game = new Game(ctx, canvas.width, canvas.height, player, background);
     game.start();
 };
 
-document.addEventListener('keydown', (e) => {
+let eventInput = document.addEventListener('keydown', (e) => {
     switch(e.code) {
         case "ArrowUp":
             player.y -= 50;
+            player.direction = 'up';
             break;
         case "ArrowDown":
             player.y += 50;
+            player.direction = 'down';
             break;
         case "ArrowLeft":
             player.x -= 50;
+            player.direction = 'left';
             break;
         case "ArrowRight":
             player.x += 50;
+            player.direction = 'right';
             break;
+        case "KeyS":
+            player.isFire = true;
     }
 });
 
-/* document.addEventListener('keyup', (e) => {
-    player.speedX = 0;
-    player.speedY = 0;
-}); */
+ document.addEventListener('keyup', (e) => {
+    switch(e.code) {
+    case "KeyS":
+        player.isFire = false;
+    }
+    /* player.speedX = 0;
+    player.speedY = 0; */
+}); 
   // What is your game idea ?
 /* 
 - Medieval theme based on the classic game R-Type (Arcade 1987). 
@@ -80,4 +93,18 @@ The shoot mechanic.
 - SFX
 - Apply medieval pixel art graphics
 - Particle explosion on hit.
+
+
+What we've done so far:
+- Player Class
+- Enemy Class
+- Collision Player
+- Player Movement
+- Score based on time
+
+To do:
+- Enemies follow player
+- Score based on enemy defeated
+- Parallax background
+- Fix player collision box size.
 */
