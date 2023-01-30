@@ -13,8 +13,6 @@ class Player {
         this.ctx = ctx;
         this.speedX = 0;
         this.speedY = 0;
-
-        
     }
     draw(){
         this.ctx.drawImage(this.wizImg, this.x, this.y, this.w, this.h);
@@ -72,20 +70,20 @@ class Player {
 };
 
 class Enemy {
-    constructor(x, y, w, h, color, ctx) {
+    constructor(x, y, w, h, ctx) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.color = color;
+        this.enemyImg = new Image ();
+        this.enemyImg.src = "./docs/assets/images/enemy.png"
         this.ctx = ctx;
         this.isDead = false;
         this.speedX = 0.02;
         this.speedY = 0.005;
     }
     draw(){
-        this.ctx.fillStyle = this.color
-        this.ctx.fillRect(this.x, this.y, this.w, this.h);
+        this.ctx.drawImage(this.enemyImg, this.x, this.y, this.w, this.h);
     }
 
     newPos() {
@@ -129,11 +127,11 @@ class Enemy {
             this.x %= canvas.width;
         }
         draw() {
-            this.ctx.drawImage(this.background, this.x, 0, 750, 550); // drawImage(image, dx, dy, dWidth, dHeight)
+            this.ctx.drawImage(this.background, this.x, 0, 750, 500); // drawImage(image, dx, dy, dWidth, dHeight)
             if (this.velocity < 0) {
-                ctx.drawImage(this.background, this.x + canvas.width, 0, 750, 550); 
+                ctx.drawImage(this.background, this.x + canvas.width, 0, 750, 500); 
             } else {
-                ctx.drawImage(this.background, this.x - this.background.width, 0, 750, 550);
+                ctx.drawImage(this.background, this.x - this.background.width, 0, 750, 500);
             }
         }
     }
@@ -183,3 +181,62 @@ class Enemy {
         );
     };  
 };  
+
+class Boss {
+    constructor(x, y, w, h, ctx) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bossImg = new Image();
+        this.bossImg.src = "/docs/assets/images/enemy.png"
+        this.ctx = ctx;
+        this.isDead = false;
+        this.speedX = 0.02;
+        this.speedY = 0.005;
+    }
+    draw(){
+        this.ctx.drawImage(this.bossImg, this.x, this.y, this.w, this.h);
+    }
+
+    newPos() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        /* if (this.x + 100 > canvas.width){
+            this.x = canvas.width - 100;
+            this.speedX -= 1
+        }
+        else if (this.x < 0){
+            this.x = 0;
+            this.speedX = 0
+
+        }
+        // Screen limit Y axis
+        else if (this.y + 84 > canvas.height){
+            this.y = canvas.height - 84;
+            this.speedY = 0
+        }
+        else if (this.y < 0){
+            this.y = 0;
+            this.speedY = 0
+        }
+        else {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        } */
+    }
+
+    top() {
+        return this.y;
+    }
+
+    bottom() {
+        return this.y + this.h;
+    }
+    left() {
+        return this.x;
+    }
+    right() {
+        return this.x + this.w;
+    }
+};

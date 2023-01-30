@@ -11,6 +11,11 @@ class Game {
         this.frames = 0;
         this.enemies = [];
         this.projectiles = [];
+        this.boss = [];
+        this.health = 100;
+        this.bossHealthCount = 5;
+        this.heartsImg = new Image();
+        this.heartsImg.src ="/docs/assets/images/heartshealth3.png"
 
     }
     start() {
@@ -32,9 +37,11 @@ class Game {
         this.checkGameOver();
         this.checkDeadEnemies();
         this.updateEnemies();
+        /* if (this.frames > 600) { */
+            this.updateBoss();
+       /*  } */
         this.updateProjectiles(); 
-   
-        
+        /* this.health(); */
     }
     stop() {
         clearInterval(this.intervalId);
@@ -64,15 +71,24 @@ class Game {
         let randomSize = Math.floor(Math.random() * 150 - 20) + 50;
         let randomY = Math.floor(Math.random() * this.height - randomSize) + randomSize;
 
-        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, "green", this.ctx)
+        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, this.ctx)
             );
         }
-
     };
+    updateBoss() {
+        for (let i = 0; i < this.boss.length; i++) {
+        
+            this.boss[i].x -= 5
+            this.boss[i].draw();
+        }
+        /* console.log(this.boss) */
+        if (this.frames === 600) {
+            this.boss.push(new Boss(canvas.width, canvas.height / 2 - 100, 200, 200, this.ctx)
+            )
+        }
+    }
     updateProjectiles() {
         for (let i = 0; i < this.projectiles.length; i++) {
-           /*   this.projectiles[i].x += 4;
-            this.projectiles[i].draw(); */
         
                 if(this.projectiles[i].direction === 'up') {
                 this.projectiles[i].y -= 4;
@@ -92,10 +108,15 @@ class Game {
     }    
     }
          if (this.player.isFire === true) {
-        this.projectiles.push(new Projectile(player.x + 25, player.y + 25, player.direction, this.ctx)
+        this.projectiles.push(new Projectile(player.x + 25, player.y + 25,'right' /* player.direction */, this.ctx)
             );
         } 
     };
+    health() {
+        if(this.health === 100){
+            this.ctx.drawImage(this.heartsImg, 100, 80, 50, 50);
+        }
+    } 
     score() {
         const points = Math.floor(this.frames / 30);
         this.ctx.font = '18px serif';
@@ -130,7 +151,7 @@ class Game {
                         this.ctx.drawImage(explosionImg, this.enemies[i].x, this.enemies[i].y, this.enemies[i].w, this.enemies[i].h );
                         this.enemies.splice(i, 1);
                         /* console.log(this.projectiles) */
-                        /* this.projectiles.splice(j, 10); */
+                        this.projectiles.splice(j, 1);
                         this.projectiles = [];
                         /* console.log(this.projectiles) */
 
@@ -141,6 +162,25 @@ class Game {
                    
                 }
             }
+            
+            for (let i = 0; i < this.boss.length; i++) {
+                for (let j = 0; j < this.projectiles.length; j++){
+                    if ( this.projectiles[j].crashWith(this.boss[i])){
+                        let explosionImg = new Image();
+                        explosionImg.src = "../docs/assets/images/fireball.png"
+                        this.ctx.drawImage(explosionImg, this.boss[i].x, this.boss[i].y, this.boss[i].w, this.boss[i].h );
+                        this.bossHealthCount--;
+                        console.log(this.bossHealthCount)
+                        this.projectiles = [];
+                        if (this.bossHealthCount <= 0) {
+                            this.boss.splice(i, 1);
+                            this.bossHealthCount = 0;
+                        }
+                    }
+                   
+                }
+            }
+        
         
     }  
 }

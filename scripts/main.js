@@ -13,9 +13,9 @@ const startButton = document.getElementById('start');
 const player = new Player(10, 300, 44, 64, 'right', ctx);
 // Creating the background:
 const background = new Background(ctx);
+const game = new Game(ctx, canvas.width, canvas.height, player, background);
 
 startButton.onclick = () => {
-    const game = new Game(ctx, canvas.width, canvas.height, player, background);
     game.start();
 };
 
@@ -37,11 +37,19 @@ let eventInput = document.addEventListener('keydown', (e) => {
             player.x += 50;
             player.direction = 'right';
             break;
-        case "KeyS":
-            player.isFire = true;
+        /* case "KeyS":
+            player.isFire = true; */
         case "KeyX":
             player.isFire = true;
-    }
+/*             console.log(player.isFire) */
+              /* let isFireTimeId =  */
+            /* let intervalId = setInterval(() => {
+                player.isFire = false
+            }, 100); 
+            clearInterval(intervalId) */
+             /* clearTimeOut(isFireTimeId); */
+/*              console.log(isFireTimeId); 
+ */    }
 });
 
 /* let fireEvent = document.addEventListener('keydown', (e) => {
@@ -55,17 +63,20 @@ document.addEventListener('keyup', (e) => {
     switch(e.code) {
     case "KeyX":
         player.isFire = false;
-    }
-}); 
-
- document.addEventListener('keyup', (e) => {
-    switch(e.code) {
+/*         console.log(player.isFire) */
     case "KeyS":
         player.isFire = false;
     }
+}); 
+
+/*  document.addEventListener('keyup', (e) => {
+    switch(e.code) {
+    case "KeyS":
+        player.isFire = false;
+    } */
     /* player.speedX = 0;
     player.speedY = 0; */
-}); 
+/* });  */
   // What is your game idea ?
 /* 
 - Medieval theme based on the classic game R-Type (Arcade 1987). 
@@ -119,8 +130,10 @@ What we've done so far:
 - Score based on time
 
 To do:
-- Enemies follow player
 - Score based on enemy defeated
-- Parallax background
 - Fix player collision box size.
+- Menus (Start game, Game Over, Highscores)
+- Boss Collision
+- Boss Movement
+- Health
 */
