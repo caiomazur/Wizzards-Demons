@@ -30,7 +30,7 @@ class Game {
         this.updateProjectiles();
         this.checkGameOver();
         this.score();
-        this.checkDeadEnemies();
+        /* this.checkDeadEnemies(); */
         
     }
     stop() {
@@ -64,7 +64,7 @@ class Game {
              this.projectiles[i].x += 4;
             this.projectiles[i].draw();
         
-    /*           if(this.player.direction === 'up') {
+           /*     if(this.projectiles[i].direction === 'up') {
                 this.projectiles[i].y -= 4;
                 this.projectiles[i].draw();
               }
@@ -79,10 +79,10 @@ class Game {
             else if (this.projectiles[i].direction === 'right') {
                 this.projectiles[i].x += 4;
                 this.projectiles[i].draw();
-    }  */ 
+    }    */
     }
          if (this.player.isFire === true) {
-        this.projectiles.push(new Projectile("red", 'right', this.ctx)
+        this.projectiles.push(new Projectile("red", this.direction, this.ctx)
             );
         } 
     };
@@ -103,7 +103,7 @@ class Game {
             alert("Game Over");
         }
     }
-    checkDeadEnemies() {
+    /* checkDeadEnemies() {
         let enemyCrash = this.enemies.some((enemy) => {
             enemy.isDead = true;
             return this.projectiles.crashWith(enemy);
@@ -116,5 +116,5 @@ class Game {
                 }
             }
         }
-    }
+    } */
 }

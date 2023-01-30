@@ -10,7 +10,7 @@ const startButton = document.getElementById('start');
 
 
 // Creating the player
-const player = new Player(10, 300, 64, 84, 'right', ctx);
+const player = new Player(10, 300, 44, 64, 'right', ctx);
 // Creating the background:
 const background = new Background(ctx);
 
@@ -41,6 +41,20 @@ let eventInput = document.addEventListener('keydown', (e) => {
             player.isFire = true;
     }
 });
+
+let fireEvent = document.addEventListener('keypress', (e) => {
+    switch(e.code) {
+        case "KeyX":
+            player.isFire = true;
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    switch(e.code) {
+    case "KeyX":
+        player.isFire = false;
+    }
+}); 
 
  document.addEventListener('keyup', (e) => {
     switch(e.code) {

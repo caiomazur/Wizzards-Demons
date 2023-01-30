@@ -63,10 +63,10 @@ class Player {
 
     crashWith(enemy) {
         return !(
-            this.bottom() < enemy.top() ||
-            this.top() > enemy.bottom() ||
-            this.right() < enemy.left() ||
-            this.left > enemy.right()
+            this.bottom() - 25 < enemy.top() ||
+            this.top() + 25 > enemy.bottom() ||
+            this.right() - 25 < enemy.left() ||
+            this.left + 25 > enemy.right()
         );
     };
 };
@@ -106,14 +106,14 @@ class Enemy {
     right() {
         return this.x + this.w;
     }
-    crashWith(projectile) {
+   /*  crashWith(projectile) {
         return !(
             this.bottom() < projectile.top() ||
             this.top() > projectile.bottom() ||
             this.right() < projectile.left() ||
             this.left > projectile.right()
         );
-    };
+    }; */
 };
 
     class Background {
@@ -122,18 +122,18 @@ class Enemy {
             this.x = 0;
             this.velocity = -1;
             this.background = new Image();
-            this.background.src = 'https://orig15.deviantart.net/8bed/f/2015/058/a/8/smb1_background_by_steamerthesteamtrain-d8jq7ea.png';
+            this.background.src = './docs/assets/images/battleback8.png';
         }
         move() {
             this.x += this.velocity;
             this.x %= canvas.width;
         }
         draw() {
-            this.ctx.drawImage(this.background, this.x, 0, 1200, 600); // drawImage(image, dx, dy, dWidth, dHeight)
+            this.ctx.drawImage(this.background, this.x, 0, 650, 550); // drawImage(image, dx, dy, dWidth, dHeight)
             if (this.velocity < 0) {
-                ctx.drawImage(this.background, this.x + canvas.width, 0, 1200, 600);
+                ctx.drawImage(this.background, this.x + canvas.width, 0, 650, 550); 
             } else {
-                ctx.drawImage(this.background, this.x - this.background.width, 0, 1200, 600);
+                ctx.drawImage(this.background, this.x - this.background.width, 0, 650, 550);
             }
         }
     }
@@ -141,8 +141,8 @@ class Enemy {
       
   class Projectile {
     constructor(color, direction, ctx) {
-        this.x = player.x + 32;
-        this.y = player.y + 42;
+        this.x = player.x + 27;
+        this.y = player.y + 37;
         this.w = 20;
         this.h = 20;
         this.direction = direction;
