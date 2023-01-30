@@ -39,15 +39,17 @@ let eventInput = document.addEventListener('keydown', (e) => {
             break;
         case "KeyS":
             player.isFire = true;
-    }
-});
-
-let fireEvent = document.addEventListener('keypress', (e) => {
-    switch(e.code) {
         case "KeyX":
             player.isFire = true;
     }
 });
+
+/* let fireEvent = document.addEventListener('keydown', (e) => {
+    switch(e.code) {
+        case "KeyX":
+            player.isFire = true;
+    }
+}); */
 
 document.addEventListener('keyup', (e) => {
     switch(e.code) {

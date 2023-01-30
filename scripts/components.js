@@ -63,10 +63,10 @@ class Player {
 
     crashWith(enemy) {
         return !(
-            this.bottom() - 25 < enemy.top() ||
-            this.top() + 25 > enemy.bottom() ||
-            this.right() - 25 < enemy.left() ||
-            this.left + 25 > enemy.right()
+            this.bottom() < enemy.top() ||
+            this.top() > enemy.bottom() ||
+            this.right() < enemy.left() ||
+            this.left() > enemy.right()
         );
     };
 };
@@ -106,14 +106,14 @@ class Enemy {
     right() {
         return this.x + this.w;
     }
-   /*  crashWith(projectile) {
+  /*    crashWith(projectile) {
         return !(
             this.bottom() < projectile.top() ||
             this.top() > projectile.bottom() ||
             this.right() < projectile.left() ||
             this.left > projectile.right()
         );
-    }; */
+    }; */ 
 };
 
     class Background {
@@ -129,31 +129,31 @@ class Enemy {
             this.x %= canvas.width;
         }
         draw() {
-            this.ctx.drawImage(this.background, this.x, 0, 650, 550); // drawImage(image, dx, dy, dWidth, dHeight)
+            this.ctx.drawImage(this.background, this.x, 0, 750, 550); // drawImage(image, dx, dy, dWidth, dHeight)
             if (this.velocity < 0) {
-                ctx.drawImage(this.background, this.x + canvas.width, 0, 650, 550); 
+                ctx.drawImage(this.background, this.x + canvas.width, 0, 750, 550); 
             } else {
-                ctx.drawImage(this.background, this.x - this.background.width, 0, 650, 550);
+                ctx.drawImage(this.background, this.x - this.background.width, 0, 750, 550);
             }
         }
     }
 
       
   class Projectile {
-    constructor(color, direction, ctx) {
-        this.x = player.x + 27;
-        this.y = player.y + 37;
+    constructor(x, y, direction, ctx) {
+        this.x = x;
+        this.y = y
         this.w = 20;
         this.h = 20;
         this.direction = direction;
-        this.color = color;
         this.ctx = ctx;
+        this.projectileImg = new Image();
+        this.projectileImg.src = "/docs/assets/images/fireball.png"
         this.speedX = 0;
         this.speedY = 0;
     }
     draw(){
-        this.ctx.fillStyle = this.color
-        this.ctx.fillRect(this.x, this.y, this.w, this.h);
+        this.ctx.drawImage(this.projectileImg, this.x, this.y, this.w, this.h);
     }
 
     newPos() {
@@ -174,12 +174,12 @@ class Enemy {
     right() {
         return this.x + this.w;
     }
-       crashWith(enemy) {
+    crashWith(enemy) {
         return !(
             this.bottom() < enemy.top() ||
             this.top() > enemy.bottom() ||
             this.right() < enemy.left() ||
-            this.left > enemy.right()
+            this.left() > enemy.right()
         );
     };  
 };  
