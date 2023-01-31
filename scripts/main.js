@@ -2,7 +2,11 @@
 
 const canvas = document.getElementById('canvas');
 
+const body = document.getElementById('body');
+
 const ctx = canvas.getContext('2d');
+
+/* body.style.width = innerWidth; */
 
 // Get the start button:
 const startButton = document.getElementById('start');

@@ -15,6 +15,9 @@ class Game {
         this.bossHealthCount = 30;
         this.playerHealthCount = 100;
 
+          this.winImg = new Image();
+          this.winImg.src = "/docs/assets/images/youwin.png"  
+
     }
 
     start() {
@@ -32,7 +35,7 @@ class Game {
         this.background.move();
         this.background.draw();
         this.player.newPos();
-        this.player.draw();
+        this.player.draw(this.frames);
         this.score();
         this.playerHealth();     
         this.checkGameOver();
@@ -53,8 +56,13 @@ class Game {
     updateEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
 
-            this.enemies[i].x -= 5
-
+            
+            if (this.enemies[i].w < 75) {
+                this.enemies[i].x -= this.player.x * 0.04/* this.enemies[i].speedX */;
+            }
+            else {
+                this.enemies[i].x -= 5
+            }
             //Enemy follows player:
             //this.enemies[i].x -= this.player.x * this.enemies[i].speedX; //
             // Another approach:
@@ -82,8 +90,8 @@ class Game {
             
             this.boss[i].newPos();
             this.boss[i].draw();
-            console.log(this.boss[i].x);
-                 if (this.boss[i].x >= canvas.width) { // Not Working! Fix Boss Movement
+            /* console.log(this.boss[i].x); */
+                 if (this.boss[i].x >= canvas.width) { 
                     this.boss[i].speedX = -6
                 }
                 else if (this.boss[i].x <= 30) {
@@ -127,15 +135,15 @@ class Game {
 
     score() {
         const points = Math.floor(this.frames / 30);
-        this.ctx.font = '18px serif';
+        this.ctx.font = '18px Russo One';
         this.ctx.fillStyle = 'red';
         this.ctx.fillText(`Score: ${points}`, 500, 50);
       }
 
       playerHealth() {
-        this.ctx.font = '18px serif';
+        this.ctx.font = '18px Russo One';
         this.ctx.fillStyle = 'red';
-        this.ctx.fillText(`Life:${this.playerHealthCount} `, 95, 42);
+        this.ctx.fillText(`🧡:${this.playerHealthCount} `, 95, 42);
       }
 
     checkGameOver() {
@@ -149,7 +157,7 @@ class Game {
                 alert("Game Over"); 
         }
     }   
-          for (let j = 0; j < this.boss.length; j++) { // NOT WORKING! WHY?
+          for (let j = 0; j < this.boss.length; j++) { 
             if (this.player.crashWith(this.boss[j])) {
                 this.playerHealthCount--;
             }
@@ -200,6 +208,14 @@ class Game {
                         if (this.bossHealthCount <= 0) {
                             this.boss.splice(i, 1);
                             this.bossHealthCount = 0;
+                            this.enemies=[]
+
+                            this.ctx.drawImage(this.winImg, 0, 0, 580, 360);
+                            const points = Math.floor(this.frames / 30);
+                            this.ctx.font = '18px serif';
+                            this.ctx.fillStyle = 'red';
+                            this.ctx.fillText(`Score: ${points}`, 100, 100);
+                            this.stop();
                     }
                 }
             }
