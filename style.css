@@ -1,0 +1,23 @@
+#canvas {
+    margin-left: 395px;
+    margin-top: 70px;
+    border-radius: 2%;
+}
+#start{
+    margin: 0;
+    margin-left: 17px;
+    padding: 0;
+    border-style: none;
+    border-radius: 10px;
+    width: 75px;
+    height: 80px
+    
+}
+.coin{
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-radius: 10px;
+    width: 75px;
+    height: 80px
+}

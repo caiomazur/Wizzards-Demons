@@ -7,10 +7,12 @@ class Player {
         this.w = w;
         this.h = h;
         this.direction = direction;
+        this.ctx = ctx;
         this.isFire = false;
+        
         this.wizImg = new Image();
         this.wizImg.src = '../docs/assets/images/wizzard_f_idle_anim_f1.png'
-        this.ctx = ctx;
+        
         this.speedX = 0;
         this.speedY = 0;
     }
@@ -104,14 +106,6 @@ class Enemy {
     right() {
         return this.x + this.w;
     }
-  /*    crashWith(projectile) {
-        return !(
-            this.bottom() < projectile.top() ||
-            this.top() > projectile.bottom() ||
-            this.right() < projectile.left() ||
-            this.left > projectile.right()
-        );
-    }; */ 
 };
 
     class Background {
@@ -120,7 +114,7 @@ class Enemy {
             this.x = 0;
             this.velocity = -1;
             this.background = new Image();
-            this.background.src = './docs/assets/images/battleback8.png';
+            this.background.src = './docs/assets/images/blue-background.png';
         }
         move() {
             this.x += this.velocity;
@@ -192,7 +186,7 @@ class Boss {
         this.bossImg.src = "/docs/assets/images/enemy.png"
         this.ctx = ctx;
         this.isDead = false;
-        this.speedX = 0.02;
+        this.speedX = 5;
         this.speedY = 0.005;
     }
     draw(){
@@ -202,28 +196,6 @@ class Boss {
     newPos() {
             this.x += this.speedX;
             this.y += this.speedY;
-        /* if (this.x + 100 > canvas.width){
-            this.x = canvas.width - 100;
-            this.speedX -= 1
-        }
-        else if (this.x < 0){
-            this.x = 0;
-            this.speedX = 0
-
-        }
-        // Screen limit Y axis
-        else if (this.y + 84 > canvas.height){
-            this.y = canvas.height - 84;
-            this.speedY = 0
-        }
-        else if (this.y < 0){
-            this.y = 0;
-            this.speedY = 0
-        }
-        else {
-            this.x += this.speedX;
-            this.y += this.speedY;
-        } */
     }
 
     top() {
