@@ -14,10 +14,20 @@ const startButton = document.getElementById('start');
 const player = new Player(10, 300, 44, 64, 'right', ctx);
 // Creating the background:
 const background = new Background(ctx);
-const game = new Game(ctx, canvas.width, canvas.height, player, background);
+/* const powerUp = new PowerUp(200, 200, 50, 50); */
+const game = new Game(ctx, canvas.width, canvas.height, player, background, /* powerUp */);
+
+const mainMx = new Audio("/docs/assets/sounds/yt1s.com - FREE Nu Metal Rock Instrumental Music  No Copyright ArkZion.mp3")
+
+const audioWin = new Audio("/docs/assets/sounds/dino-win.mp3")
+
 // Starting the game
 startButton.onclick = () => {
     game.start();
+    audioWin.pause();
+    mainMx.play();
+    mainMx.volume = 0.1;
+    audioWin.volume = 0.9;
     startButton.onclick = null;
 };
 

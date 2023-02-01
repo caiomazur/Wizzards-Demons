@@ -12,11 +12,13 @@ body {
     margin: 0; 
     width: 100%;
     height: 100%;
-     background-image: url('./docs/assets/images/arcadebg3.gif');
+     background-image: url('./docs/assets/images/arcadebg12.gif');
      display: flex;
     align-items: center;
     justify-content: center;
-    background-size: cover;  
+    background-size: cover; 
+    width: 100vw;
+    height: 100vh; 
 }
 
 #canvas {
@@ -25,7 +27,7 @@ body {
     border-radius: 2%;
     background-image: url("/docs/assets/images/initialscreen.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 
 }
 #start{
