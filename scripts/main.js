@@ -10,6 +10,10 @@ const ctx = canvas.getContext('2d');
 
 // Get the start button:
 const startButton = document.getElementById('start');
+const normalMode = document.getElementById('normalMode');// --------------------------
+const arcadeMode = document.getElementById('arcadeMode');
+const resetButton = document.getElementById('reset');
+
 // Creating the player
 const player = new Player(10, 300, 44, 64, 'right', ctx);
 // Creating the background:
@@ -23,13 +27,57 @@ const audioWin = new Audio("/docs/assets/sounds/dino-win.mp3")
 
 // Starting the game
 startButton.onclick = () => {
+   /*  document.body.style.backgroundImage = "url('../docs/assets/images/background-finalgif.gif')";
+    game.start();
+    audioWin.pause();
+    mainMx.play();
+    mainMx.volume = 0.1;
+    audioWin.volume = 0.8;
+    startButton.onclick = null; */
+
+    startButton.style.display = "none"
+    startButton.onclick = null;
+    arcadeMode.style.display = "block"
+    normalMode.style.display = "block"
+
+};
+
+normalMode.onclick = () => {
+    document.body.style.backgroundImage = "url('../docs/assets/images/background-finalgif.gif')";
+    game.start();
+    audioWin.pause();
+    mainMx.play();
+    mainMx.volume = 0.1;
+    audioWin.volume = 0.8;
+    normalMode.onclick = null;
+    arcadeMode.style.display = "none"
+
+    game.normalModeState = true;
+    game.arcadeModeState = false;
+    resetButton.style.display = "block";
+
+
+};
+
+arcadeMode.onclick = () => {
+    document.body.style.backgroundImage = "url('../docs/assets/images/background-finalgif.gif')";
     game.start();
     audioWin.pause();
     mainMx.play();
     mainMx.volume = 0.1;
     audioWin.volume = 0.8;
     startButton.onclick = null;
+    arcadeMode.onclick = null;
+    normalMode.style.display = "none"
+
+    game.arcadeModeState = true;
+    game.normalModeState = false;
+    resetButton.style.display = "block";
 };
+
+resetButton.onclick = () => {
+    window.location.reload();
+}
 
 // Controls
 
@@ -66,18 +114,6 @@ let fireEvent = document.addEventListener('keypress', (e) => {
         break;
         case "KeyJ":
             game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'left', ctx));
-        break;
-        case "ArrowUp":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'up', ctx));
-        break;
-        case "ArrowRight":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'right', ctx));
-        break;
-        case "ArrowDown":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'down', ctx));
-        break;
-        case "ArrowLeft":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'left', ctx));
     }
 }); 
 
@@ -94,67 +130,3 @@ document.addEventListener('keyup', (e) => {
             break; */
     }
 }); 
-
-/* Notes:
-// What is your game idea ?
-- Medieval theme based on the classic game R-Type (Arcade 1987). 
-
-
-// What is the game logic?
- 
-- Create player that can move in the x and y axis. 
-- Enemies appears from the right side of the screen. 
-- The player shoots projectiles from the center of thr player to the right side.
-- Collision player, enemies and projectiles. 
-- You win the game by defeating the boss at the end of the level.
-
-
-// How does the game end?
-
-When an enemy hits the player.
-You can win the game by defeating the boss at the end of the level.
-
-
-// What is your MVP - Minimum Viable Product?
- 
- - The player, enemies and projectiles will all be square shapes done in javascript using canvas elements.
- - Collision has to be implemented
- - The game stops when the enemy hits the player
- - The player can shoot projectiles and move using a keyboard key press.
-
-
-// What do you expect your biggest difficulties will be?
- 
-The shoot mechanic.
-
-
-// Bonus
- 
-- More than one life
-- Power-ups
-- Hard mode
-- Music
-- SFX
-- Apply medieval pixel art graphics
-- Particle explosion on hit.
-
-What we've done so far:
-- Player Class
-- Enemy Class
-- Boss Class
-- Collision Player
-- Player Movement
-- Score based on time
-- Parallax Background
-- Shoot Mechanic (Needs improvement)
-
-To do:
-- Score based on enemy defeated
-- Fix player collision box size.
-- Menus (Start game, Game Over, high scores)
-- Boss Collision
-- Boss Movement
-- Boss crashWith Player
-- Health
-- Improve shoot mechanic
-*/

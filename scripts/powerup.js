@@ -10,7 +10,7 @@ class PowerUp {
         this.h = 50;
         this.velocity = -1;
         this.powerUpImg = new Image();
-        this.powerUpImg.src = '/docs/assets/images/flask_big_yellow.png';
+        this.powerUpImg.src = '/docs/assets/images/flask_big_red.png';
     }
 
     move() {

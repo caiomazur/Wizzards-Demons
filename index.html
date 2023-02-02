@@ -1,26 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Game Demo</title>
-</head>
-<body id="body")>
-    <canvas id="canvas" width="600px" height="400px" ></canvas>
+  </head>
+  <body id="body">
+    <canvas id="canvas" width="600px" height="370px"></canvas>
 
-    <button id="start"><div><img class="coin" width="200" height="auto" src="./docs/assets/images/cointoplay2.jpg" alt="Start Game"></div></button>
+    <div id="buttons">
+      <button id="start">
+        <div>
+          <img
+            class="coin"
+            width="200"
+            height="auto"
+            src="./docs/assets/images/cointoplay2.jpg"
+            alt="Start Game"
+          />
+        </div>
+      </button>
+
+      <button id="normalMode">
+        <div>
+          <img
+            class="normal"
+            width="200"
+            height="auto"
+            src="./docs/assets/images/normalBtnImg.png"
+            alt="Normal Mode"
+          />
+        </div>
+      </button>
+
+      <button id="arcadeMode">
+        <div>
+          <img
+            class="arcade"
+            width="200"
+            height="auto"
+            src="./docs/assets/images/arcadeBtnImg.png"
+            alt="Arcade Mode"
+          />
+        </div>
+      </button>
+
+      <button id="reset">
+        <div>
+          <img
+            class="reset"
+            width="200"
+            height="auto"
+            src="./docs/assets/images/reset.png"
+            alt="Reset"
+          />
+        </div>
+      </button>
+    </div>
 
     <script src="./scripts/background.js"></script>
     <script src="./scripts/boss.js"></script>
-    <script src="./scripts/components.js"></script>
     <script src="./scripts/enemy.js"></script>
     <script src="./scripts/player.js"></script>
     <script src="./scripts/powerup.js"></script>
     <script src="./scripts/projectile.js"></script>
     <script src="./scripts/game.js"></script>
     <script src="./scripts/main.js"></script>
-    
-</body>
+  </body>
 </html>
