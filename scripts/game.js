@@ -136,7 +136,7 @@ class Game {
 
     if (this.normalModeState) {
       // -----------------------------------------------------------------
-      if (this.frames % 60 === 0) {
+      if (this.frames % 30 === 0) {
         let randomSize = Math.floor(Math.random() * 60 - 10) + 60;
         let randomY =
           Math.floor(Math.random() * this.height - randomSize) + randomSize;
@@ -152,7 +152,7 @@ class Game {
       }
     } else if (this.arcadeModeState) {
       // -----------------------------------------------------------------
-      if (this.frames % 60 === 0) {
+      if (this.frames % 30 === 0) {
         let randomSize = Math.floor(Math.random() * 60 - 10) + 60;
         let randomY =
           Math.floor(Math.random() * this.height - randomSize) + randomSize;
@@ -171,7 +171,7 @@ class Game {
 
   updateBoss() {
     if (this.boss === null && this.normalModeState) {
-      this.bossHealthCount = 20;
+      this.bossHealthCount = 40;
     } else if (this.arcadeModeState) {
       this.bossHealthCount = 20 * this.difficultyCount;
     }

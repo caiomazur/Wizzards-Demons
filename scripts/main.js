@@ -55,7 +55,7 @@ normalMode.onclick = () => {
   game.start();
   audioWin.pause();
   mainMx.play();
-  mainMx.volume = 0.1;
+  mainMx.volume = 0.2;
   audioWin.volume = 0.8;
   normalMode.onclick = null;
   arcadeMode.style.display = "none";
@@ -71,7 +71,7 @@ arcadeMode.onclick = () => {
   game.start();
   audioWin.pause();
   mainMx.play();
-  mainMx.volume = 0.1;
+  mainMx.volume = 0.2;
   audioWin.volume = 0.8;
   startButton.onclick = null;
   arcadeMode.onclick = null;
