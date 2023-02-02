@@ -1,13 +1,12 @@
 /** @type {HTMLCanvasElement} */   // Enable canvas auto complete
 
 class Game {
-    constructor(ctx, width, height, player, background,/*  powerUp */) {
+    constructor(ctx, width, height, player, background) {
         this.ctx = ctx;
         this.width = width;
         this.height = height;
         this.player = player;
         this.background = background;
-        /* this.powerUp = powerUp; */
         this.interval = null;
         this.frames = 0;
         this.enemies = [];
@@ -17,11 +16,12 @@ class Game {
         this.bossHealthCount = 20;
         this.playerHealthCount = 100;
         this.scoreCount = 0;
-        
-        /* this.powerUpB = false; */
 
         this.enemyExplode = false;
         this.enemyI = null;
+        this.bossExplode = false;
+        this.bossI = null;
+        
 
         this.winImg = new Image();
         this.winImg.src = "/docs/assets/images/youwin.png"  
@@ -50,13 +50,12 @@ class Game {
         this.explosionImg = img1;
         this.images = [img1, img2, img3, img4, img5, img6, img7, img8]
 
-        const img9 = new Image();
+        /* const img9 = new Image();
         const img10 = new Image();
         const img11 = new Image();
         const img12 = new Image();
         const img13 = new Image();
-        const img14 = new Image();
-        
+        const img14 = new Image(); */
 
     }
 
@@ -64,33 +63,22 @@ class Game {
         this.intervalId = setInterval(this.update, 1000 / 60) 
     }
 
-    // Update needs to be an arrow function because "this" needs to refer to 
-    // the class and not the update method
     update = () => {
-        // Game logic here
         this.frames++;
         /* console.log(this.frames) */
-        /* console.log(this.projectiles) */
         this.clear();
         this.background.move();
         this.background.draw();
-    
         this.player.newPos();
         this.player.draw(this.frames);
 
-        /* this.powerUp.framesUp(); */
-     /*    if(this.frames >= 300 && this.frames <= 500) {
-            this.powerUp.move()
-            this.powerUp.draw(this.frames);
-        } */
-        
-        /* console.log(this.powerUp) */
         this.updatePowerUp();
         this.updateProjectiles(); 
         this.updateEnemies();
         this.updateBoss();
 
         this.dieExplosion();
+        this.dieExplosionBoss();
 
 
         this.score();
@@ -111,7 +99,6 @@ class Game {
 
     updateEnemies() {
         for (let i = 0; i < this.enemies.length; i++) {
-
             
             if (this.enemies[i].y > 220) { 
                 this.enemies[i].x -= 5
@@ -121,16 +108,7 @@ class Game {
                 this.enemies[i].x -= 3
                 this.enemies[i].draw2(this.frames);
             }
-            //Enemy follows player:
-            //this.enemies[i].x -= this.player.x * this.enemies[i].speedX; //
-            // Another approach:
-           /*  if(this.player.y > this.height/2){
-                this.enemies[i].y += 2
-            } else if(this.player.y < this.height){
-                this.enemies[i].y -= 2
-            } */
-
-        }
+        };
         // Create enemies every certain frames:
         if (this.frames % 60 === 0) { 
 
@@ -143,9 +121,7 @@ class Game {
         else if (randomY > 300) {
             randomY = 300;
         }
-
-        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, this.ctx)
-            );
+        this.enemies.push(new Enemy(this.width, randomY, randomSize, randomSize, this.ctx));
         }
     };
 
@@ -163,14 +139,14 @@ class Game {
 
             } 
 
-        }
-        /* console.log(this.boss) */
+        };
         // Create boss after certain frames:
         if (this.frames === 600) {
             this.boss.push(new Boss(canvas.width, canvas.height / 2 - 100, 200, 200, this.ctx)
             )
         }
-    }
+    };
+
     updateProjectiles() {
         for (let i = 0; i < this.projectiles.length; i++) {
         
@@ -194,23 +170,19 @@ class Game {
     };
 
     updatePowerUp() {
-        /* console.log('here') */
         console.log(this.powerUps)
         console.log(this.frames)
         for (let i = 0; i < this.powerUps.length; i++) {
-            /* console.log('here2') */
-            this.powerUps[i].move()
+            this.powerUps[i].move();
             this.powerUps[i].draw(this.frames);
             /* console.log(this.powerUps.length) */
-            
             /* console.log(this.powerUps) */
-            
         }    
-        if (this.frames == 150) {
+        if (this.frames === 150) {
             this.powerUps.push(new PowerUp(700, 235, 50, 50));
             /* console.log(this.powerUps) */
             }   
-        }
+        };
     
 
     score() {
@@ -239,6 +211,9 @@ class Game {
         else if (this.playerHealthCount > 100 && this.playerHealthCount <= 125) {
             this.ctx.fillText(`🧡🧡🧡🧡🧡:${this.playerHealthCount} `, 25, 50);
         }
+        else if (this.playerHealthCount > 125 && this.playerHealthCount <= 150) {
+            this.ctx.fillText(`🧡🧡🧡🧡🧡🧡:${this.playerHealthCount} `, 25, 50);
+        }
         
       }
 
@@ -249,8 +224,9 @@ class Game {
                 this.playerHealthCount--;
             }
             else if (this.playerHealthCount <= 0) {
-                this.enemies=[]
-                this.boss=[]
+                this.enemies=[];
+                this.boss=[];
+
                 this.ctx.drawImage(this.overImg, 0, 0, canvas.width, canvas.height);
                 this.ctx.font = '50px Russo One';
                 this.ctx.fillStyle = 'white';
@@ -261,6 +237,7 @@ class Game {
                 this.ctx.font = '28px Russo One';
                 this.ctx.fillText(`Your Score was: ${this.scoreCount}`, 165, canvas.height - 123);
                 this.ctx.strokeText(`Your Score was: ${this.scoreCount}`, 165, canvas.height - 123);
+
                 this.stop();
                 mainMx.pause(); 
         }
@@ -270,8 +247,9 @@ class Game {
                 this.playerHealthCount--;
             }
             else if (this.playerHealthCount <= 0) {
-                this.enemies=[]
-                this.boss=[]
+                this.enemies=[];
+                this.boss=[];
+
                 this.ctx.drawImage(this.overImg, 0, 0, canvas.width, canvas.height);
                 this.ctx.font = '50px Russo One';
                 this.ctx.fillStyle = 'white';
@@ -282,6 +260,7 @@ class Game {
                 this.ctx.font = '28px Russo One';
                 this.ctx.fillText(`Your Score was: ${this.scoreCount}`, 165, canvas.height - 123);
                 this.ctx.strokeText(`Your Score was: ${this.scoreCount}`, 165, canvas.height - 123);
+
                 this.stop();
                 mainMx.pause(); 
         }
@@ -291,11 +270,15 @@ class Game {
     dieExplosion() {
         if (this.enemyExplode) {
                        
-                   
             this.explosionImg = this.images[Math.floor(this.frames % 60  / 7.5)]; 
-            this.ctx.drawImage(this.explosionImg, this.enemyI.x, this.enemyI.y, this.enemyI.w, this.enemyI.h );
-
-                        /* this.dieExplosion = false; */
+            this.ctx.drawImage(this.explosionImg, this.enemyI.x, this.enemyI.y, this.enemyI.w, this.enemyI.h);
+        }
+    }
+    dieExplosionBoss() {
+        if (this.bossExplode) {
+            
+            this.explosionImg = this.images[Math.floor(this.frames % 60  / 7.5)]; 
+            this.ctx.drawImage(this.explosionImg, this.bossI.x, this.bossI.y, this.bossI.w, this.bossI.h);          
         }
     }
       checkDeadEnemies() {
@@ -307,11 +290,9 @@ class Game {
                     if (this.projectiles[j].crashWith(this.enemies[i])) {
 
                         this.enemyI = this.enemies[i];
-                        /*  this.dieExplosion(); */
                         
                         this.enemies.splice(i, 1);
                         this.scoreCount += 100;
-                        /* console.log(this.projectiles) */
                         this.projectiles.splice(j, 1);
                         this.enemyExplode = true;
 
@@ -320,11 +301,9 @@ class Game {
                         }, 1000);
                         
                          /* this.projectiles = [];  */
-                        /* console.log(this.projectiles) */
                     }
                     else if (this.enemies[i].x < -50 || this.enemies[i].y < -50 || this.enemies[i].y > canvas.width + 50) {
                         this.enemies.splice(i, 1);
-                        
                     }
                 }
             }
@@ -344,7 +323,17 @@ class Game {
                        /*  console.log(this.bossHealthCount) */
                         /* this.projectiles = []; */
                         if (this.bossHealthCount <= 0) {
+
+                            this.bossI = this.boss[i];
+
                             this.boss.splice(i, 1);
+
+                            this.bossExplode = true;
+
+                            setTimeout(() => {
+                            this.bossExplode = false;
+                            }, 1000);
+                            
                             this.scoreCount += 3000;
                             this.bossHealthCount = 0;
                             this.enemies=[]

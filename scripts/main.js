@@ -27,7 +27,7 @@ startButton.onclick = () => {
     audioWin.pause();
     mainMx.play();
     mainMx.volume = 0.1;
-    audioWin.volume = 0.9;
+    audioWin.volume = 0.8;
     startButton.onclick = null;
 };
 
@@ -55,17 +55,29 @@ let eventInput = document.addEventListener('keydown', (e) => {
 });
 let fireEvent = document.addEventListener('keypress', (e) => {
     switch(e.code) {
-        case "KeyO":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'up', ctx)
-        );
+        case "KeyI":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'up', ctx));
         break;
         case "KeyL":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'right' /* game.player.direction */, ctx)
-        );
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'right', ctx));
         break;
         case "KeyK":
-            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'down', ctx)
-        );
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'down', ctx));
+        break;
+        case "KeyJ":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'left', ctx));
+        break;
+        case "ArrowUp":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'up', ctx));
+        break;
+        case "ArrowRight":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'right', ctx));
+        break;
+        case "ArrowDown":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'down', ctx));
+        break;
+        case "ArrowLeft":
+            game.projectiles.push(new Projectile(game.player.x + 25, game.player.y + 25, 'left', ctx));
     }
 }); 
 
