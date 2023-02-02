@@ -21,9 +21,9 @@ const background = new Background(ctx);
 /* const powerUp = new PowerUp(200, 200, 50, 50); */
 const game = new Game(ctx, canvas.width, canvas.height, player, background, /* powerUp */);
 
-const mainMx = new Audio("/docs/assets/sounds/yt1s.com - FREE Nu Metal Rock Instrumental Music  No Copyright ArkZion.mp3")
+const mainMx = new Audio("./docs/assets/sounds/yt1s.com - FREE Nu Metal Rock Instrumental Music  No Copyright ArkZion.mp3")
 
-const audioWin = new Audio("/docs/assets/sounds/dino-win.mp3")
+const audioWin = new Audio("./docs/assets/sounds/dino-win.mp3")
 
 // Starting the game
 startButton.onclick = () => {

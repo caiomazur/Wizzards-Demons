@@ -29,10 +29,10 @@ class Game {
     this.bossI = null;
 
     this.winImg = new Image();
-    this.winImg.src = "/docs/assets/images/youwin.png";
+    this.winImg.src = "./docs/assets/images/youwin.png";
 
     this.overImg = new Image();
-    this.overImg.src = "/docs/assets/images/gameover.png";
+    this.overImg.src = "./docs/assets/images/gameover.png";
 
     const img1 = new Image();
     const img2 = new Image();
@@ -43,14 +43,14 @@ class Game {
     const img7 = new Image();
     const img8 = new Image();
 
-    img1.src = "/docs/assets/images/explosion/explosion-6_01.png";
-    img2.src = "/docs/assets/images/explosion/explosion-6_11.png";
-    img3.src = "/docs/assets/images/explosion/explosion-6_21.png";
-    img4.src = "/docs/assets/images/explosion/explosion-6_31.png";
-    img5.src = "/docs/assets/images/explosion/explosion-6_41.png";
-    img6.src = "/docs/assets/images/explosion/explosion-6_51.png";
-    img7.src = "/docs/assets/images/explosion/explosion-6_61.png";
-    img8.src = "/docs/assets/images/explosion/explosion-6_71.png";
+    img1.src = "./docs/assets/images/explosion/explosion-6_01.png";
+    img2.src = "./docs/assets/images/explosion/explosion-6_11.png";
+    img3.src = "./docs/assets/images/explosion/explosion-6_21.png";
+    img4.src = "./docs/assets/images/explosion/explosion-6_31.png";
+    img5.src = "./docs/assets/images/explosion/explosion-6_41.png";
+    img6.src = "./docs/assets/images/explosion/explosion-6_51.png";
+    img7.src = "./docs/assets/images/explosion/explosion-6_61.png";
+    img8.src = "./docs/assets/images/explosion/explosion-6_71.png";
 
     this.explosionImg = img1;
     this.images = [img1, img2, img3, img4, img5, img6, img7, img8];

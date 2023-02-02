@@ -20,14 +20,14 @@ class Projectile {
         const img7 = new Image();
         const img8 = new Image();
 
-        img1.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_01.png";
-        img2.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_101.png";
-        img3.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_11.png";
-        img4.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_111.png";
-        img5.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_121.png";
-        img6.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_131.png";
-        img7.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_141.png";
-        img8.src = "/docs/assets/images/explosion/16_sunburn_spritesheet_151.png";
+        img1.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_01.png";
+        img2.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_101.png";
+        img3.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_11.png";
+        img4.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_111.png";
+        img5.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_121.png";
+        img6.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_131.png";
+        img7.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_141.png";
+        img8.src = "./docs/assets/images/explosion/16_sunburn_spritesheet_151.png";
     
         this.img = img1;
         this.images = [img1, img2, img3, img4, img5, img6, img7, img8]

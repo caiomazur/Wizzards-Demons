@@ -20,14 +20,14 @@ class Enemy {
         const img7 = new Image();
         const img8 = new Image();
 
-        img1.src = "/docs/assets/images/masked_orc_run_anim_f0.png";
-        img2.src = "/docs/assets/images/masked_orc_run_anim_f1.png";
-        img3.src = "/docs/assets/images/masked_orc_run_anim_f2.png";
-        img4.src = "/docs/assets/images/masked_orc_run_anim_f3.png";
-        img5.src = "/docs/assets/images/masked_orc_run_anim_f0.png";
-        img6.src = "/docs/assets/images/masked_orc_run_anim_f1.png";
-        img7.src = "/docs/assets/images/masked_orc_run_anim_f2.png";
-        img8.src = "/docs/assets/images/masked_orc_run_anim_f3.png";
+        img1.src = "./docs/assets/images/masked_orc_run_anim_f0.png";
+        img2.src = "./docs/assets/images/masked_orc_run_anim_f1.png";
+        img3.src = "./docs/assets/images/masked_orc_run_anim_f2.png";
+        img4.src = "./docs/assets/images/masked_orc_run_anim_f3.png";
+        img5.src = "./docs/assets/images/masked_orc_run_anim_f0.png";
+        img6.src = "./docs/assets/images/masked_orc_run_anim_f1.png";
+        img7.src = "./docs/assets/images/masked_orc_run_anim_f2.png";
+        img8.src = "./docs/assets/images/masked_orc_run_anim_f3.png";
 
         const img9 = new Image();
         const img10 = new Image();
@@ -42,18 +42,18 @@ class Enemy {
         const img19 = new Image();
         const img20 = new Image();
 
-        img9.src = "/docs/assets/images/Cacodaemon Sprite Sheet_0.png";
-        img10.src = "/docs/assets/images/Cacodaemon Sprite Sheet_1.png";
-        img11.src = "/docs/assets/images/Cacodaemon Sprite Sheet_10.png";
-        img12.src = "/docs/assets/images/Cacodaemon Sprite Sheet_11.png";
-        img13.src = "/docs/assets/images/Cacodaemon Sprite Sheet_12.png";
-        img14.src = "/docs/assets/images/Cacodaemon Sprite Sheet_13.png";
-        img15.src = "/docs/assets/images/Cacodaemon Sprite Sheet_2.png";
-        img16.src = "/docs/assets/images/Cacodaemon Sprite Sheet_3.png";
-        img17.src = "/docs/assets/images/Cacodaemon Sprite Sheet_4.png";
-        img18.src = "/docs/assets/images/Cacodaemon Sprite Sheet_5.png";
-        img19.src = "/docs/assets/images/Cacodaemon Sprite Sheet_8.png";
-        img20.src = "/docs/assets/images/Cacodaemon Sprite Sheet_9.png";
+        img9.src = "./docs/assets/images/Cacodaemon Sprite Sheet_0.png";
+        img10.src = "./docs/assets/images/Cacodaemon Sprite Sheet_1.png";
+        img11.src = "./docs/assets/images/Cacodaemon Sprite Sheet_10.png";
+        img12.src = "./docs/assets/images/Cacodaemon Sprite Sheet_11.png";
+        img13.src = "./docs/assets/images/Cacodaemon Sprite Sheet_12.png";
+        img14.src = "./docs/assets/images/Cacodaemon Sprite Sheet_13.png";
+        img15.src = "./docs/assets/images/Cacodaemon Sprite Sheet_2.png";
+        img16.src = "./docs/assets/images/Cacodaemon Sprite Sheet_3.png";
+        img17.src = "./docs/assets/images/Cacodaemon Sprite Sheet_4.png";
+        img18.src = "./docs/assets/images/Cacodaemon Sprite Sheet_5.png";
+        img19.src = "./docs/assets/images/Cacodaemon Sprite Sheet_8.png";
+        img20.src = "./docs/assets/images/Cacodaemon Sprite Sheet_9.png";
   
       
     

@@ -24,14 +24,14 @@ class Boss {
     const img11 = new Image();
     const img12 = new Image();
 
-    img1.src = "/docs/assets/images/big_demon_run_anim_f0.png";
-    img2.src = "/docs/assets/images/big_demon_run_anim_f1.png";
-    img3.src = "/docs/assets/images/big_demon_run_anim_f2.png";
-    img4.src = "/docs/assets/images/big_demon_run_anim_f3.png";
-    img5.src = "/docs/assets/images/big_demon_run_anim_f0.png";
-    img6.src = "/docs/assets/images/big_demon_run_anim_f1.png";
-    img7.src = "/docs/assets/images/big_demon_run_anim_f2.png";
-    img8.src = "/docs/assets/images/big_demon_run_anim_f3.png";
+    img1.src = "./docs/assets/images/big_demon_run_anim_f0.png";
+    img2.src = "./docs/assets/images/big_demon_run_anim_f1.png";
+    img3.src = "./docs/assets/images/big_demon_run_anim_f2.png";
+    img4.src = "./docs/assets/images/big_demon_run_anim_f3.png";
+    img5.src = "./docs/assets/images/big_demon_run_anim_f0.png";
+    img6.src = "./docs/assets/images/big_demon_run_anim_f1.png";
+    img7.src = "./docs/assets/images/big_demon_run_anim_f2.png";
+    img8.src = "./docs/assets/images/big_demon_run_anim_f3.png";
 
     this.img = img1;
     this.images = [

@@ -21,14 +21,14 @@ class Player {
     const img7 = new Image();
     const img8 = new Image();
 
-    img1.src = "/docs/assets/images/wizzard_m_run_anim_f0.png";
-    img2.src = "/docs/assets/images/wizzard_m_run_anim_f1.png";
-    img3.src = "/docs/assets/images/wizzard_m_run_anim_f2.png";
-    img4.src = "/docs/assets/images/wizzard_m_run_anim_f3.png";
-    img5.src = "/docs/assets/images/wizzard_m_run_anim_f0.png";
-    img6.src = "/docs/assets/images/wizzard_m_run_anim_f1.png";
-    img7.src = "/docs/assets/images/wizzard_m_run_anim_f2.png";
-    img8.src = "/docs/assets/images/wizzard_m_run_anim_f3.png";
+    img1.src = "./docs/assets/images/wizzard_m_run_anim_f0.png";
+    img2.src = "./docs/assets/images/wizzard_m_run_anim_f1.png";
+    img3.src = "./docs/assets/images/wizzard_m_run_anim_f2.png";
+    img4.src = "./docs/assets/images/wizzard_m_run_anim_f3.png";
+    img5.src = "./docs/assets/images/wizzard_m_run_anim_f0.png";
+    img6.src = "./docs/assets/images/wizzard_m_run_anim_f1.png";
+    img7.src = "./docs/assets/images/wizzard_m_run_anim_f2.png";
+    img8.src = "./docs/assets/images/wizzard_m_run_anim_f3.png";
 
     this.img = img1;
     this.images = [img1, img2, img3, img4, img5, img6, img7, img8];
