@@ -43,7 +43,7 @@ startButton.onclick = () => {
 };
 
 normalMode.onclick = () => {
-    document.body.style.backgroundImage = "url('../docs/assets/images/background-finalgif.gif')";
+    document.body.style.backgroundImage = "url('./docs/assets/images/background-finalgif.gif')";
     game.start();
     audioWin.pause();
     mainMx.play();
@@ -60,7 +60,7 @@ normalMode.onclick = () => {
 };
 
 arcadeMode.onclick = () => {
-    document.body.style.backgroundImage = "url('../docs/assets/images/background-finalgif.gif')";
+    document.body.style.backgroundImage = "url('./docs/assets/images/background-finalgif.gif')";
     game.start();
     audioWin.pause();
     mainMx.play();

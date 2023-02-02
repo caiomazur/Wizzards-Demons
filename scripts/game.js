@@ -118,7 +118,7 @@ class Game {
           this.enemies[i].draw1(this.frames);
         } else if (this.arcadeModeState) {
           //----------------------------------------------------------------------
-          this.enemies[i].x -= 5 - this.difficultyCount;
+          this.enemies[i].x -= 5 + this.difficultyCount;
           this.enemies[i].draw1(this.frames);
         }
       } else {
@@ -128,7 +128,7 @@ class Game {
           this.enemies[i].draw2(this.frames);
         } else if (this.arcadeModeState) {
           // -----------------------------------------------------------------
-          this.enemies[i].x -= 3 - this.difficultyCount;
+          this.enemies[i].x -= 3 + this.difficultyCount;
           this.enemies[i].draw2(this.frames);
         }
       }
