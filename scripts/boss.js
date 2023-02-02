@@ -51,10 +51,10 @@ class Boss {
   }
 
   newPos() {
-    if (this.speedX === 6){
-        this.x -= this.speedX;
-    }else{
-        this.x += this.speedX;
+    if (this.speedX === 6) {
+      this.x -= this.speedX;
+    } else {
+      this.x += this.speedX;
     }
   }
 

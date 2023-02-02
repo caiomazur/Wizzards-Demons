@@ -50,7 +50,7 @@ class Player {
     }
     // Screen limit Y axis
     else if (this.y + 84 > canvas.height) {
-      this.y = canvas.height - 84;
+      this.y = canvas.height - 64;
       this.speedY = 0;
     } else if (this.y < 0) {
       this.y = 0;
@@ -72,7 +72,7 @@ class Player {
     return this.x + 10;
   }
   right() {
-    return this.x + this.w - 10;
+    return this.x + this.w - 15;
   }
 
   crashWith(enemy) {

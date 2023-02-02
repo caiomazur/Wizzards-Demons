@@ -265,7 +265,7 @@ class Game {
         /* console.log(this.powerUps) */
       }
     } else if (this.arcadeModeState) {
-      if (this.frames % 1700) {
+      if (this.frames % 1700 === 0) {
         // ----------------------------------------------
         this.powerUps.push(new PowerUp(700, 235, 50, 50));
         /* console.log(this.powerUps) */
@@ -419,7 +419,7 @@ class Game {
       for (let j = 0; j < this.projectiles.length; j++) {
         if (this.projectiles[j].crashWith(this.boss)) {
           let explosionImg = new Image();
-          explosionImg.src = "../docs/assets/images/fireball.png";
+          explosionImg.src = "./docs/assets/images/fireball.png";
           this.ctx.drawImage(
             explosionImg,
             this.boss.x,
